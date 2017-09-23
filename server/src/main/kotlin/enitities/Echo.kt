@@ -1,0 +1,1 @@
+data class Echo constructor(val user: String, val message: String)
