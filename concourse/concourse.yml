@@ -1,0 +1,15 @@
+---
+jobs:
+- name: build-test-deploy
+  public: true
+  serial: true
+  plan:
+  - get: echo
+  - task: build
+    file: echo/concourse/build.yml
+
+resources:
+- name: echo
+  type: git
+  source:
+    uri: https://github.com/echosoft-consultancy/echo.git
