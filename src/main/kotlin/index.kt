@@ -5,6 +5,6 @@ val http: Http = ignite()
 
 fun main(args: Array<String>) {
     http.get("hello") {
-        "hello"
+        EchoController().handle(request, response)
     }
 }
