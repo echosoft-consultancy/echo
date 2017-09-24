@@ -7,7 +7,7 @@ image_resource:
     repository: brianbyers/concourse-gradle
 
 inputs:
-- name: echo
+- name: source-code
 
 run:
-  path: echo/concourse/build.sh
+  path: source-code/concourse/build.sh

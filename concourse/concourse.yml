@@ -1,15 +1,27 @@
 ---
 jobs:
-- name: build-test-deploy
+- name: build-test
   public: true
   serial: true
   plan:
-  - get: echo
+  - get: source-code
   - task: build
-    file: echo/concourse/build.yml
+    file: source-code/concourse/build.yml
+
+- name: deploy
+  public: true
+  serial: true
+  plan:
+  - get: source-code
+    passed: [build-test]
+  - task: deploy
+    params:
+        AWS_ACCESS_KEY_ID: ((access-key))
+        AWS_SECRET_ACCESS_KEY: ((secret-key))
+    file: source-code/concourse/deploy.yml
 
 resources:
-- name: echo
+- name: source-code
   type: git
   source:
     uri: https://github.com/echosoft-consultancy/echo.git

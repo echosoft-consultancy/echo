@@ -14,3 +14,7 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 *.iml
 .idea/
+
+# Terraform state
+terraform.tfstate
+terraform.tfstate.backup
